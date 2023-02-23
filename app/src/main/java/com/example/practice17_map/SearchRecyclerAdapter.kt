@@ -2,16 +2,24 @@ package com.example.practice17_map
 
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView.OnItemClickListener
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.Adapter
 import com.example.practice17_map.databinding.ViewholderSearchResultItemBinding
 
-class SearchRecyclerAdapter : RecyclerView.Adapter<> {
+class SearchRecyclerAdapter :
+    RecyclerView.Adapter<SearchRecyclerAdapter.SearchResultItemViewHolder>() {
 
-    class SearchResultItemViewHolder(itemView: View, val searchResultClickListener: (Any) -> Unit) :
-        RecyclerView.ViewHolder(itemView) {
-        fun bindData(data: Any) = with(itemView) {
+    private val searchResultList: List<Any> = listOf()
+    lateinit var searchResultClickListener: (Any) -> Unit
+
+    class SearchResultItemViewHolder(
+        private val binding: ViewholderSearchResultItemBinding,
+        val searchResultClickListener: (Any) -> Unit
+    ) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun bindData(data: Any) = with(binding) {
+            textTextView.text = "제목"
+            subtextTextView.text = "부제목"
+
 
         }
     }
@@ -21,15 +29,10 @@ class SearchRecyclerAdapter : RecyclerView.Adapter<> {
         return SearchResultItemViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: ???, position: Int) {
-
+    override fun onBindViewHolder(holder: SearchResultItemViewHolder, position: Int) {
+        holder.bindData(searchResultList[position])
     }
 
-    override fun getItemCount(): Int {
-        TODO("Not yet implemented")
-    }
-
-
-
+    override fun getItemCount(): Int = 10
 
 }
