@@ -17,6 +17,7 @@ class MainActivity : AppCompatActivity() {
 
         initAdapter()
         initViews()
+
     }
 
     private fun initViews() = with(binding) {

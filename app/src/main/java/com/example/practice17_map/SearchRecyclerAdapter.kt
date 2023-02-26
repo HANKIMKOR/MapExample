@@ -19,8 +19,6 @@ class SearchRecyclerAdapter :
         fun bindData(data: Any) = with(binding) {
             textTextView.text = "제목"
             subtextTextView.text = "부제목"
-
-
         }
     }
 
